@@ -32,7 +32,8 @@ public class UserController {
 		/* UserService userService = new UserService(); */
 		userService.join(userVo);
 		
-		return "redirect:/main";
+		/*return "redirect:/main";*/
+		return "user/joinOk";
 	}
 	
 	@RequestMapping("/loginForm")
@@ -59,6 +60,15 @@ public class UserController {
 			System.out.println("로그인 실패");
 			return "redirect:/user/loginForm?result=fail";	// 다시 로그인폼을 요청하라
 		}
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		session.removeAttribute("authUser");// 세션 "authUser"값 지우기
+		session.invalidate();// 세션값지우기2 세트로사용
+		
+		return "redirect:/main";
 	}
 	
 }

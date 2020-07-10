@@ -20,9 +20,8 @@ public class UserController {
 	@RequestMapping("/joinForm")
 	public String joinForm() {
 		System.out.println("/user/joinForm()");
-		return "/user/joinForm";
+		return "user/joinForm";
 	}
-	
 	
 	@RequestMapping("/join")
 	public String join(@ModelAttribute UserVo userVo) {
@@ -39,7 +38,7 @@ public class UserController {
 	@RequestMapping("/loginForm")
 	public String loginForm() {
 		System.out.println("/user/loginForm()");
-		return "/user/loginForm";
+		return "user/loginForm";
 	}
 	
 	@RequestMapping("/login")
@@ -64,11 +63,18 @@ public class UserController {
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
+		System.out.println("로그아웃 성공");
 		
 		session.removeAttribute("authUser");// 세션 "authUser"값 지우기
 		session.invalidate();// 세션값지우기2 세트로사용
 		
 		return "redirect:/main";
+	}
+	
+	@RequestMapping("/modifyForm")
+	public String modifyForm(HttpSession session) {
+		System.out.println("/user/modifyForm");
+		return "user/modifyForm";
 	}
 	
 }

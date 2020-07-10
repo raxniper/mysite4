@@ -11,7 +11,6 @@
 			#{name},
 			#{gender})
 	   ]]>
-
 	</insert>
 	
 	<select id="selectUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
@@ -23,4 +22,5 @@
 			and 	password = #{password}
 		]]>
 	</select>
+	
 </mapper>

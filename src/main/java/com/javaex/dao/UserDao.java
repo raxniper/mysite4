@@ -12,6 +12,7 @@ public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// join
 	public int insert(UserVo userVo) {
 		System.out.println("userDao:insert");
 		
@@ -23,6 +24,7 @@ public class UserDao {
 		return sqlSession.insert("user.insert", userVo);
 	}
 	
+	// login
 	public UserVo selectUser(UserVo userVo) {
 		System.out.println("UserDao.selectUser");
 		System.out.println(userVo.toString());
@@ -33,7 +35,7 @@ public class UserDao {
 		*/
 		
 		return sqlSession.selectOne("user.selectUser", userVo);
-		
 	}
+	
 	
 }

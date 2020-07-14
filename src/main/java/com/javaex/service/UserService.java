@@ -16,20 +16,26 @@ public class UserService {
 	// 회원가입
 	public int join(UserVo userVo) {
 		System.out.println("UserService: join");
-	
 		return userDao.insert(userVo);
 	}
 	
 	// 로그인
 	public UserVo login(UserVo userVo) {
 		System.out.println("UserService: login");
-		
-		/*
-		UserVo authUser = userDao.selectUser(userVo);
-		return authUser;
-		*/
-		
 		return userDao.selectUser(userVo);
 	}
+	
+	// 회원정보 수정폼
+	public UserVo modifyForm(int no) {
+		System.out.println("UserService: modifyForm");
+		return userDao.selectUser(no);
+	}
+	
+	// 회원정보 수정
+	public int modify(UserVo userVo) {
+		System.out.println("UserService: modify");
+		return userDao.updateUser(userVo);
+	}
+	
 	
 }

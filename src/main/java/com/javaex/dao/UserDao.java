@@ -12,30 +12,32 @@ public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// join
+	// 회원 가입
 	public int insert(UserVo userVo) {
-		System.out.println("userDao:insert");
-		
-		/*
-		int count = sqlSession.insert("user.insert", userVo);
-		System.out.println(count);
-		*/
-		
+		System.out.println("userDao: insert");
 		return sqlSession.insert("user.insert", userVo);
 	}
 	
-	// login
+	// 로그인
 	public UserVo selectUser(UserVo userVo) {
-		System.out.println("UserDao.selectUser");
+		System.out.println("UserDao: selectUser");
 		System.out.println(userVo.toString());
-		
-		/*
-		UserVo authUser = sqlSession.selectOne("user.selectUser", userVo);
-		return authUser;
-		*/
-		
 		return sqlSession.selectOne("user.selectUser", userVo);
 	}
+
+	// 회원정보 조회
+	public UserVo selectUser(int no) {
+		System.out.println("UserDao: selectUser(int)");
+		System.out.println(no);
+		return sqlSession.selectOne("user.selectInfo", no);
+	}
+	
+	// 회원정보 수정
+	public int updateUser(UserVo userVo) {
+		System.out.println("UserDao: update");
+		return sqlSession.update("user.updateUser", userVo);
+	}
+	
 	
 	
 }
